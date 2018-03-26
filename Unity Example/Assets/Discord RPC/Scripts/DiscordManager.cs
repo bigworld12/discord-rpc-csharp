@@ -48,8 +48,7 @@ public class DiscordManager : MonoBehaviour {
 		client.OnJoinRequested += OnJoinRequested;
 				
 		Debug.Log("Initializing Client...");
-		_client.Initialize();
-		_client.SetPresence(presence.ToRichPresence());		
+		_client.Initialize();	
 
 	}
 
@@ -89,49 +88,50 @@ public class DiscordManager : MonoBehaviour {
 		Debug.Log("Setting client to null...");
 		_client = null;
 	}
-	private static void OnReady(object sender, ReadyMessage args)
+	private void OnReady(object sender, ReadyMessage args)
 	{
 		Debug.Log("On Ready: " + args.Version);
+		_client.SetPresence(presence.ToRichPresence());
 	}
 
-	private static void OnClose(object sender, CloseMessage args)
+	private void OnClose(object sender, CloseMessage args)
 	{
 		Debug.Log("Lost Connection with client: " + args.Reason);
 	}
 
-	private static void OnError(object sender, ErrorMessage args)
+	private void OnError(object sender, ErrorMessage args)
 	{
 		Debug.Log("Error occured: " + args.Message + ", " + args.Code);
 	}
 
-	private static void OnPresenceUpdate(object sender, PresenceMessage args)
+	private void OnPresenceUpdate(object sender, PresenceMessage args)
 	{
 		Debug.Log("Rich Presence Updated: " + args.Presence == null ? "NULL" : args.Presence.State);
 	}
 
-	private static void OnSubscribe(object sender, SubscribeMessage args)
+	private void OnSubscribe(object sender, SubscribeMessage args)
 	{
 		Debug.Log("Subscribed: " + args.Event);
 	}
 
-	private static void OnUnsubscribe(object sender, UnsubscribeMessage args)
+	private void OnUnsubscribe(object sender, UnsubscribeMessage args)
 	{
 		Debug.Log("Unsubscribed: " + args.Event);
 	}
 
-	private static void OnJoin(object sender, JoinMessage args)
+	private void OnJoin(object sender, JoinMessage args)
 	{
 		Debug.Log("Joining Game '" + args.Secret + "'...");
 		Debug.Log(" - Failed: Actual Game Not Implemented.");
 	}
 
-	private static void OnSpectate(object sender, SpectateMessage args)
+	private void OnSpectate(object sender, SpectateMessage args)
 	{
 		Debug.Log("Spectating Game '" + args.Secret + "'...");
 		Debug.Log(" - Failed: Actual Game Not Implemented.");
 	}
 
-	private static void OnJoinRequested(object sender, JoinRequestMessage args)
+	private void OnJoinRequested(object sender, JoinRequestMessage args)
 	{
 		Debug.Log(args.User.Username + " has requested to join our game.");
 		Debug.Log(" - User's Avatar: " + args.User.GetAvatarURL(User.AvatarFormat.PNG, User.AvatarSize.x2048));
