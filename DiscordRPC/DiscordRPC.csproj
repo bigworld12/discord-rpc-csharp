@@ -1,13 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>net35;netstandard2.0</TargetFrameworks>
-    <NuspecFile>DiscordRPC.nuspec</NuspecFile>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net35;netstandard2.0</TargetFrameworks>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<PackageId>DiscordRichPresence.Core</PackageId>
+		<Authors>Lachee</Authors>
+		<PackageProjectUrl>https://github.com/bigworld12/discord-rpc-csharp/tree/dotnet-core</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/bigworld12/discord-rpc-csharp/tree/dotnet-core</RepositoryUrl>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Version>1.0.121</Version>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
+	</ItemGroup>
 </Project>
